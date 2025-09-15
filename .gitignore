@@ -1,0 +1,25 @@
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Packaging
+dist/
+build/
+*.egg-info/
+
+# Editor and OS files
+.vscode/
+.DS_Store
+
+# Python test / env
+.pytest_cache/
+.env
+
+# Logs and runtime files (optional)
+# proxy.log  # consider keeping logs in repo for debugging; uncomment to ignore
+uvicorn.out
+
+# Database files
+*.sqlite3

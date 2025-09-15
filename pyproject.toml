@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gemini-proxy"
+version = "0.1.0"
+description = "FastAPI reverse proxy that adapts OpenAI-style requests to a local Gemini CLI"
+requires-python = ">=3.9"
+
+dependencies = [
+  "fastapi>=0.95",
+  "uvicorn>=0.22",
+  "pydantic>=2.0",
+  "httpx>=0.24",
+]
+
+[project.scripts]
+proxy = "proxy:app"
+
+[tool.setuptools]
+py-modules = ["proxy"]

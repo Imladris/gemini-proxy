@@ -1,0 +1,18 @@
+ * Serving Flask app 'proxy'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [14/Sep/2025 05:54:07] "POST /v1/chat/completions HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Sep/2025 05:54:07] "POST /v1/chat/completions HTTP/1.1" 200 -
+{"ts": 1757905055, "id": "280f936b7b2c411ea24b2dc83fa3ea5c", "method": "GET", "path": "/health", "request": "", "status": 200, "response": "", "duration": 0.0002932548522949219}
+{"ts": 1757905194, "id": "49a84ca3c3bc4509868a90a268eaa6a2", "method": "GET", "path": "/models", "request": "", "status": 200, "response": "", "duration": 0.0005848407745361328}
+{"ts": 1757905251, "id": "2dac51625c7e4df1b78db76a11279ebb", "method": "GET", "path": "/models", "request": "", "status": 200, "response": "", "duration": 0.0002868175506591797}
+{"ts": 1757905357, "id": "33b7b1d9f8554c9b811c8c92e56ea5a7", "method": "GET", "path": "/v1/models", "request": "", "status": 200, "response": "", "duration": 0.00016427040100097656}
+{"ts": 1757905405, "id": "462be34fcd554085b0fe61b8a809af0b", "method": "GET", "path": "/v1/models", "request": "", "status": 200, "response": "", "duration": 0.0017206668853759766}
+{"ts": 1757905419, "id": "13b614a1912d47b7b2e018992a3d26eb", "method": "GET", "path": "/models", "request": "", "status": 200, "response": "", "duration": 0.000576019287109375}
+{"ts": 1757905425, "id": "ebd9759d373c430c8979ff2bb32efe17", "method": "POST", "path": "/chat/completions", "request": "{\"messages\":[{\"role\":\"system\",\"content\":\"Write Assistant's next reply in a fictional chat between Assistant and User.\"},{\"role\":\"system\",\"content\":\"[Start a new Chat]\"},{\"role\":\"user\",\"content\":\"你好我们是老朋友吗\"}],\"model\":\"gemini-2.5-pro-preview-06-05\",\"temperature\":1,\"max_tokens\":300,\"stream\":true,\"presence_penalty\":0,\"frequency_penalty\":0,\"top_p\":1}", "status": 200, "response": "", "duration": 13.489783763885498}
+{"ts": 1757905685, "id": "8077560103bf473f9534f2c1beb77ba4", "method": "POST", "path": "/chat/completions", "request": "{\"model\":\"gemini-2.5-pro-preview-06-05\",\"messages\":[{\"role\":\"user\",\"content\":\"你好我们是老朋友吗\"}],\"stream\":true}", "status": 200, "response": "", "duration": 10.023606061935425}
+{"ts": 1757905718, "id": "73b532aceb9b43a6a4dfaddb4481b1f6", "method": "POST", "path": "/chat/completions", "request": "{\"messages\":[{\"role\":\"system\",\"content\":\"Write Assistant's next reply in a fictional chat between Assistant and User.\"},{\"role\":\"system\",\"content\":\"[Start a new Chat]\"},{\"role\":\"user\",\"content\":\"你好我们是老朋友吗\"}],\"model\":\"gemini-2.5-pro-preview-06-05\",\"temperature\":1,\"max_tokens\":300,\"stream\":true,\"presence_penalty\":0,\"frequency_penalty\":0,\"top_p\":1}", "status": 200, "response": "", "duration": 6.233849763870239}
+{"ts": 1757905896, "id": "229ef3c443244abd9c0ec8347d6f38e2", "method": "GET", "path": "/v1/models", "request": "", "status": 200, "response": "", "duration": 0.0002219676971435547}
+{"ts": 1757906542, "id": "053eb63fbe5e430d8065c6655402f51b", "method": "GET", "path": "/health", "request": "", "status": 200, "response": "", "duration": 0.0003829002380371094}
