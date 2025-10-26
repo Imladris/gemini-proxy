@@ -1,14 +1,14 @@
 import unittest
-from example_pkg.core import greet
 
 
-class TestGreet(unittest.TestCase):
-    def test_happy_path(self):
-        self.assertEqual(greet('Alice'), 'Hello, Alice!')
-
-    def test_empty_name_raises(self):
-        with self.assertRaises(ValueError):
-            greet('')
+class TestHealth(unittest.TestCase):
+    def test_health_endpoint(self):
+        from fastapi.testclient import TestClient
+        from proxy import app
+        client = TestClient(app)
+        resp = client.get('/health')
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.json()['status'], 'ok')
 
 
 if __name__ == '__main__':
