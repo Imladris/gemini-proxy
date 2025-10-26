@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gemini-proxy"
-version = "0.1.0"
+version = "0.2.0"
 description = "FastAPI reverse proxy that adapts OpenAI-style requests to a local Gemini CLI"
 requires-python = ">=3.9"
 
@@ -16,7 +16,8 @@ dependencies = [
 ]
 
 [project.scripts]
-proxy = "proxy:app"
+proxy = "gemini_proxy.main:app"
 
 [tool.setuptools]
-py-modules = ["proxy"]
+packages = {find = {}}
+include-package-data = true
