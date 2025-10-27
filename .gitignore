@@ -1,25 +1,94 @@
+# Virtual environments
 .venv/
+venv/
+env/
+ENV/
 
 # Python cache
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.py.class
 
 # Packaging
 dist/
 build/
 *.egg-info/
+*.egg
+.eggs/
+pip-wheel-metadata/
 
-# Editor and OS files
+# Editor and IDE files
 .vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
 .DS_Store
+Thumbs.db
+desktop.ini
 
-# Python test / env
+# Python test / environment
 .pytest_cache/
-.env
+.coverage
+htmlcov/
+.tox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
 
-# Logs and runtime files (optional)
-# proxy.log  # consider keeping logs in repo for debugging; uncomment to ignore
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs and runtime files
+proxy.log
+*.log
+logs/
 uvicorn.out
 
 # Database files
 *.sqlite3
+*.db
+
+# Documentation build files
+docs/_build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store?
+._*
+
+# Windows
+ehthumbs.db
+Icon?
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# Temporary files
+*.tmp
+*.temp
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Development configuration (keep these in repo for AI assistants)
+# .roo/
+# .roorules
+# .cursorrules
+# CLAUDE.md
