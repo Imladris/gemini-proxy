@@ -87,8 +87,8 @@ $RECYCLE.BIN/
 *.backup
 *.old
 
-# Development configuration (keep these in repo for AI assistants)
-# .roo/
-# .roorules
-# .cursorrules
-# CLAUDE.md
+# Development configuration
+.roo/
+.roorules
+.cursorrules
+CLAUDE.md
