@@ -123,14 +123,75 @@ def build_error_response(
 def count_tokens(text: str) -> int:
     """
     估算文本的token数量
-    
+
+    使用改进的平衡算法来估算token数量，适用于中英文混合文本：
+    - 基于OpenAI tokenizer的特点进行优化
+    - 对短文本使用更精确的估算
+    - 对特殊内容（代码、JSON）进行合理处理
+
     Args:
         text: 输入文本
-    
+
     Returns:
         int: 估算的token数量
     """
-    # 简单的token估算：按空格分割单词
     if not text:
         return 0
-    return len(text.split())
+
+    import re
+
+    # 极短文本特殊处理
+    if len(text) <= 5:
+        return 1
+    elif len(text) <= 15:
+        # 短文本按字符密度估算
+        chinese_count = len(re.findall(r'[\u4e00-\u9fff]', text))
+        if chinese_count > len(text) * 0.5:
+            # 以中文为主
+            return max(1, chinese_count // 2 + len(text) // 6)
+        else:
+            # 以英文为主
+            return max(1, len(text) // 5)
+
+    # 统计各种类型的字符
+    chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', text))
+
+    # 更精确的英文单词统计（不包括单个字符）
+    english_words = len([w for w in re.findall(r'\b[a-zA-Z]+\b', text) if len(w) > 1])
+
+    # 统计数字序列
+    digit_groups = len(re.findall(r'\b\d+\b', text))
+
+    # 检测结构化内容
+    has_code_blocks = bool(re.search(r'```[\s\S]*?```', text))
+    has_json = bool(re.search(r'\{[^{}]*\}|\[[^\[\]]*\]', text))
+
+    # 基础token估算
+    chinese_tokens = max(1, chinese_chars // 2)  # 中文：约2字符/token
+    english_tokens = max(0, english_words)      # 英文：约1单词/token
+    digit_tokens = digit_groups                  # 数字：1组/token
+
+    # 结构化内容特殊处理
+    structure_tokens = 0
+    if has_code_blocks or has_json:
+        # 对代码块和JSON使用更宽松的字符/token比
+        structure_chars = len(re.sub(r'[a-zA-Z0-9\s\u4e00-\u9fff]', '', text))
+        structure_tokens = structure_chars // 6  # 特殊字符密度低
+
+    # 组合计算，避免重复计算
+    # 计算基础token数
+    base_tokens = chinese_tokens + english_tokens + digit_tokens + structure_tokens
+
+    # 使用字符密度作为对比和修正
+    char_based_tokens = len(text) // 4  # 平均4字符/token的估算
+
+    # 智能融合两种方法
+    if base_tokens > char_based_tokens * 1.5:
+        # 如果基础估算过高，使用字符密度修正
+        final_tokens = max(char_based_tokens, base_tokens - (base_tokens - char_based_tokens) // 2)
+    else:
+        # 否则使用两者的加权平均
+        final_tokens = int(base_tokens * 0.7 + char_based_tokens * 0.3)
+
+    # 确保最小值
+    return max(1, final_tokens)
