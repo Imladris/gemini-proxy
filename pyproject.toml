@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.scripts]
-proxy = "gemini_proxy.main:app"
+proxy = "src.gemini_proxy.main:app"
 
 [tool.setuptools]
 packages = {find = {}}
